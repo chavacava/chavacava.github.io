@@ -1,4 +1,7 @@
-## #1 Testing is bad...
+---
+tags: testing formal-methods
+---
+# #1 Testing is bad...
 
 ...,really bad, at checking your code **does not** have bugs.
 As our friend Edsger Dijkstra said:
@@ -9,16 +12,16 @@ Under this perspective a test should be considered successful only if it has act
 Running hundreds or thousands of tests without spotting bugs is, possibly, more the symptom of poor tests than a proof of code correctness.
 
 So, how can you show that your code does not have bugs?
-Well, to reach a high degree of confidence, and even the proof, of your code been "bug free" you could use **formal methods**: a set of techniques that allow you specify, develop and verify your programs in a mathematical rigorous way.
+Well, to reach a high degree of confidence, and even the proof, of your code being "bug free" you could use **formal methods**: a set of techniques that allow you specify, develop and verify your programs in a mathematical rigorous way.
 
 Even if _formal methods_ is today a living and dynamic research domain in computer science, its roots are in the, now far, 70's when the _program correctness_ problem emerged.
-Since then, multitude of techniques were developed but their utilization remains almost anecdotal.
-Why? Because putting in practice these techniques still requires skills far beyond those we learn in traditional engineering education.
-In resume, formal methods are still a "_researcher thing_" rather than an "_industrial tool_"
+Since then, a multitude of techniques have been developed but their utilization remains almost anecdotal.
+Why? Because putting in practice these techniques requires a lot of implementation effort (tooling is not simple) and it also requires skills far beyond those we learn in traditional engineering education.
+In resume, formal methods are still a "_researcher thing_" rather than an "_industrial tool_" (here I'm exaggerating a little because formal methods are actually used at some industries for developing mission critical systems)
 
-## Look mom... no tests!
+## Look mom... No tests!
 
-To let you grasp the potential of formal methods I'll introduce you a concrete example of their use on code written in Java, a language widely used in industry.
+To let you grasp the potential of formal methods I'll introduce you to a concrete example of their use on code written in Java, a language widely used in industry.
 
 The following code is plain Java annotated with [Java Modeling Language (JML)](https://www.cs.ucf.edu/~leavens/JML/index.shtml) specifications.
 
@@ -76,15 +79,15 @@ Clear, right?
 
 JML specifications follow the _design-by-contract_ paradigm establishing _preconditions_ that must hold to successfully call a method (the `requires` annotations in the code) and _postconditions_ the method must hold at the end of its execution (`ensures`)
 
-The beauty of this is that once JML specifications are written, you can run tools that will **statically** (i.e. without executing your code) check that method implementations respect the spec.
+The beauty of this is that once JML specifications are written, you can run tools that will **statically** (i.e. without executing your code!) check that method implementations respect the spec.
 
 While some researchers claim that formal methods are a replacement for testing, a more pragmatic approach is to see them as complementary tools.
 
 ## Test, test, and test
 Well not sure you can forget tests... formal methods are not mainstream and even with them it seems that we will need testing. 
-So lets write better tests to catch more bugs (we know they are there)!
+So let's write better tests to catch more bugs (we know they are there)!
 
-We are, in average, not so good at writing tests. 
+We are, on average, not so good at writing tests. 
 Why? 
 Well there are many factors: 
 some studies highlight differences in the mindset of _programmer_ and _tester_ roles and the difficulty we have to incarnate both; 
@@ -94,24 +97,27 @@ often when testing we focus on the wrong goal (coverage) and not on finding bugs
 We test by feeding our code with some inputs we consider interesting and checking if the code behaves as expected; in other words we do _example-based testing_
 What can be wrong?
 Inputs!
-It seems we are not good to choose our examples :)
+It seems we are not good at choosing our examples :)
 
 What can we do to better test our programs? 
-We could start delegating to the computer the generation of a subset of our tests inputs. We are lucky and some testing approaches and their corresponding tools can help us in this task, for example:
+We could start delegating to the computer the generation of a subset of our test inputs. 
+We are lucky and some testing approaches and their corresponding tools can help us in this task, for example:
 
 - Property-based-testing
 - Fuzzy-testing
 
-This note is taking too long so I'll not dive in the details of these two testing approaches (maybe in a future note) but I know you will check them (I you were not yet aware of them) and look for the available tooling for your favorite language.
+These two approaches are related, to the point some people say they are the same thing!
 
-Testing is very important (I do not need to tell you why) and we need to be better at.
+This note is taking too long so I'll not dive into the details of these two testing approaches (maybe in a future note) but I know you will check them (if you were not yet aware of them) and look for the available tooling for your favorite language.
 
-# Bonus-track Game
+Testing is very important (I do not need to tell you why) and we need to be better at it.
 
-Lets say you must test a function that receives three segment lengths and it returns the kind of triangle these segments form.
+## Bonus-track Game
+
+Let's say you must test a function that receives three segment lengths and it returns the kind of triangle these segments form.
 The function signature is in the lines of:
 ```
 func triangleKind(s1, s2, s3 float) kind 
 ```
 
-How many test cases you can imagine?
+How many test cases can you imagine? Let us know in the comments.
