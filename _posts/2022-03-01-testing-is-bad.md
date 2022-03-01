@@ -79,7 +79,7 @@ Clear, right?
 
 JML specifications follow the _design-by-contract_ paradigm establishing _preconditions_ that must hold to successfully call a method (the `requires` annotations in the code) and _postconditions_ the method must hold at the end of its execution (`ensures`)
 
-The beauty of this is that once JML specifications are written, you can run tools that will **statically** (i.e. without executing your code!) check that method implementations respect the spec.
+The beauty of this is that once JML specifications are written, you can run [tools](https://www.cs.ucf.edu/~leavens/JML/download.shtml) that will **statically** (i.e. without executing your code!) check that method implementations respect the spec.
 
 While some researchers claim that formal methods are a replacement for testing, a more pragmatic approach is to see them as complementary tools.
 
