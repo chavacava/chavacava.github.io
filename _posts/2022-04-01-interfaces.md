@@ -26,7 +26,18 @@ and
 > [Structure and Interpretation of Computer Programs](https://doc.lagout.org/programmation/Lisp/Scheme/SICP.pdf)
  
 As you can imagine, because interfaces are such an important tool in building software, the idea of programming languages including means to create interfaces is not new.
-Interfaces are present in programming languages from the '70s, for example in [Modula](https://www.research-collection.ethz.ch/handle/20.500.11850/68669) (yes, long before Java and all the object oriented stuff)
+Interfaces are present in programming languages from the '70s, for example in [Modula](https://www.research-collection.ethz.ch/handle/20.500.11850/68669) (yes, long before Java and all the object oriented hype)
+
+Defining interfaces is not necessarily easy.
+The above citation subtly mentions one difficulty in defining interfaces: _We control complexity by building abstractions that hide details **when appropriate**._
+
+When do we need to add an interface? 
+What the interface should expose?
+In other words: What is the _contract_ that our component should expose to its environment?
+
+By stating the above questions we might be tempted to see interfaces from, let's say, a Modula/C++/Java approach to interfaces where the focus is on the implementors of the interface rather than on its consumers.
+
+
 
 
 
