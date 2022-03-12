@@ -1,5 +1,5 @@
 ---
-tags: abstraction interfaces
+tags: abstraction interface
 ---
 # #2 Interfaces
 
@@ -13,7 +13,7 @@ Yes, these things you usually declare with an `interface` keyword.
 
 I will say it from the beginning: I love interfaces. 
 Why? 
-Because they are a simple tool to create _abstractions_ and all this _computer programming_ thing is about building the right abstractions that allows us master the complexity of the problem we are trying to solve.
+Because they are a simple tool to create _abstractions_ and all this _programming_ thing is about building the right abstractions to master the complexity of the problem we are trying to solve.
 I'm not saying something new here:
 
 > _Controlling complexity is the essence of computer programming_
@@ -27,32 +27,33 @@ and
 > 
 > [Structure and Interpretation of Computer Programs](https://doc.lagout.org/programmation/Lisp/Scheme/SICP.pdf)
  
-As you can imagine, interfaces being such an important tool in building software, the idea of programming languages including means to create interfaces is not new.
-Interfaces are present in programming languages from the '70s, for example in [Modula](https://www.research-collection.ethz.ch/handle/20.500.11850/68669). Yes, long before Java and all the object oriented wave. (Interfaces and modules, or components, are very related concepts so it is not a surprise to see interfaces in the language that introduced modules in programing)
+As you can imagine, interfaces being such an important tool in building software, the idea of programming languages including means to create them is not new.
+Interfaces are present in programming languages from the '70s, for example in [Modula](https://www.research-collection.ethz.ch/handle/20.500.11850/68669). Yes, long before Java and the whole object oriented wave. (Interfaces and modules, or components, are very related concepts so it is not a surprise to see interfaces in the language that introduced modules in programing)
 
 Defining interfaces is not necessarily easy.
-The above citation subtly mentions one difficulty in defining interfaces: _We control complexity by building abstractions that hide details **when appropriate**._
+The above citation subtly mentions one difficulty in defining interfaces: _We control complexity by building abstractions that hide **details when appropriate**._
 
 When do we need to add an interface? 
 What the interface should expose as behavior?
-These are not simple to answer questions, the talent of a developer can be measured by how she/he answers to these questions.
- 
-By thinking on the above questions we might be tempted to see interfaces from, let's say, a Modula/C++/Java point of view where the focus is on the implementors of the interface rather than on its consumers.
+These are not simple to answer questions, we could measure the talent of a developer by how she/he answers to these questions.
+
+# Small is better 
+
+By thinking on the above questions we might be tempted to see interfaces from, let's say, a Modula/C++/Java point of view where the focus is on the implementers of the interface rather than on its consumers.
 In these languages we usually ask _What is the contract that our component should expose to its environment?_ rather than _What are the contract that must be exposed by those components that our component uses?_
 
-Languages like Java, where each component (classes in that case) must declare which interfaces they actually implement (_nominal subtyping_) kindly force us to think on interfaces from the implementor point of view.
-That leads naturally to bigger interfaces.
+Languages like Java, where each component (class) must declare which interfaces they actually implement (_nominal subtyping_) kindly force us to think on interfaces from the implementer point of view, leading naturally to bigger interfaces.
 And we know that
 > _The bigger the interface, the weaker the abstraction_
 >
 > Rob Pike
 
-Interfaces defining many method are, in Java, the norm and not the exception.
-You might argue that this is not the fault of the language and blame  developers.
+Interfaces defining many methods are, in Java, the norm and not the exception.
+You might argue that this is not the fault of the language and blame developers.
 But I think nominal subtyping has some credit in that inclination to define big interfaces.
 
 Other languages use a totally different approach: components do not need to declare which interfaces they implement.
-The compiler will control the interface compatibility between interacting components by checking if used components expose the methods required by the consumers, this is called _structural subtyping_.
+The compiler will control the interface compatibility between interacting components by checking if used components expose the methods required by the consumers without requiring explicit declaration of implemented interfaces, this is _structural subtyping_.
 
 Structural subtyping allows developers to put the focus on the interface consumer side.
 We can say it allows _consumer driven design_ of interfaces.
@@ -71,10 +72,6 @@ In GO we can define those types in-place, beside the function using them.
 So let's define `reader` and `writer` types.
 
 ```go
-func Copy(source reader, destination writer) error { 
-    ... bytes = source.Read() ... destination.Write(bytes) ... 
-}
-
 type reader interface {
     Read() ([]bytes, error)
 }
@@ -82,15 +79,19 @@ type reader interface {
 type writer interface {
     Write([]byte) error
 }
+
+func Copy(source reader, destination writer) error { 
+    ... bytes = source.Read() ... destination.Write(bytes) ... 
+}
 ```
 
-Then when calling `Copy` we can pass as `source` any component exposing a `Read` method (the same for `destination` and `Write` but you already got the point)
-And, very important, these components are not aware they implement these interfaces (in fact, in the example, interfaces are declared as not public)
+Then when calling `Copy` we can pass as `source` any component exposing a `Read` method (the same for `destination` and `Write`,  you already got the point)
+And, very important, these components are not aware they implement these interfaces (notice that, in the example, interfaces are declared as not public)
 That means we can call `Copy` by passing components whom are not under our control (we can not do that in Java)
 
-Of course you can define small interfaces (a.k.a. _role interfaces_) in Java, and in other languages with nominal subtyping, but it demands more work: when adding a new interface you need to update the list of implemented interfaces of all implementing classes.
+Of course you can define small interfaces (a.k.a. _role interfaces_) in Java, and in other languages with nominal subtyping, but it demands more work: when adding a new interface you need to update the list of implemented interfaces of all implementing classes (if possible!).
 Some people see this as a good thing because it avoids _accidental subtyping_.
-Beyond the extra work, striving to small interfaces is always a winning bet.
+Beyond the extra work required by the nominal subtyping, striving for small interfaces is always a winning bet.
 
-
-
+Interfaces are also very helpful when writing tests by easing the use of mocked components.
+Here again, small interfaces are preferable to big ones.
