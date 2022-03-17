@@ -1,6 +1,7 @@
 ---
 tags: abstraction interface
 ---
+![interfaces](../images/headers/interfaces.png)
 # #2 Interfaces
 
 This note will be about _interfaces_.
@@ -9,7 +10,7 @@ They are everywhere in our life.
 Right now you might be using many.
 And right now you are thinking "hey! you did not yet define what you exactly mean by _interface_".
 You are right, interfaces are so many things (your computer keyboard, an USB port, the electricity plug, the screen you are looking at, the REST endpoint that served this page, ...), but as you might suspect, I will talk (write in fact!) about interfaces in programming languages.
-Yes, these things you usually declare with an `interface` keyword.
+Yes, these things you usually declare with the `interface` keyword.
 
 I will say it from the beginning: I love interfaces. 
 Why? 
