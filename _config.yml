@@ -45,4 +45,8 @@ defaults:
 # highlighter: none # Not supported by GitHub Pages
 kramdown:
   syntax_highlighter_opts:
-    disable: true
+    disable: false
+
+collections:
+  others: # other blog posts
+    output: true
