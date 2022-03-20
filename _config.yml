@@ -38,8 +38,6 @@ defaults:
   - scope:
       path: ""
       type: post
-    values:
-      tags: Other
 
 # Disable highlighting to use highlightJS instead
 # highlighter: none # Not supported by GitHub Pages
