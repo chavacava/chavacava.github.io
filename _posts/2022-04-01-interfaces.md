@@ -88,9 +88,9 @@ func Copy(source reader, destination writer) error {
 
 Then when calling `Copy` we can pass as `source` any component exposing a `Read` method (the same for `destination` and `Write`,  you already got the point)
 And, very important, these components are not aware they implement these interfaces (notice that, in the example, interfaces are declared as not public)
-That means we can call `Copy` by passing components whom are not under our control (we can not do that in Java)
+therefore we can call `Copy` by passing components whom are not under our control (we can not do that in Java)
 
-Of course you can define small interfaces (a.k.a. _role interfaces_) in Java, and in other languages with nominal subtyping, but it demands more work: when adding a new interface you need to update the list of implemented interfaces of all implementing classes (if possible!).
+Of course you can define small interfaces (a.k.a. _role interfaces_) in Java, and in other languages with nominal subtyping, but it demands more work: when adding a new interface you need to update (if possible!) the list of implemented interfaces of all implementing classes.
 Some people see this as a good thing because it avoids _accidental subtyping_.
 Beyond the extra work required by the nominal subtyping, striving for small interfaces is always a winning bet.
 
