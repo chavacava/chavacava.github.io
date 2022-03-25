@@ -1,7 +1,6 @@
 ---
 tags: abstraction interface
 ---
-![interfaces](../images/headers/interfaces.png)
 # #2 Size matters... at least when we talk about interfaces
 
 This note will be about _interfaces_.
