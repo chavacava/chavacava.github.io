@@ -49,3 +49,5 @@ kramdown:
 collections:
   others: # other blog posts
     output: true
+    
+timezone: Europe/Paris
