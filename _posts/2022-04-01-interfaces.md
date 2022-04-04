@@ -26,7 +26,8 @@ and
 > We control complexity by establishing conventional interfaces that enable us to construct systems by combining standard, well-understood pieces in a "mix and match" way._
 > 
 > [Structure and Interpretation of Computer Programs](https://doc.lagout.org/programmation/Lisp/Scheme/SICP.pdf){:target="_blank" rel="noopener"}
- 
+
+
 As you can imagine, interfaces being such an important tool in building software, the idea of programming languages including means to create them is not new.
 Interfaces are present in programming languages from the '70s, for example in [Modula](https://www.research-collection.ethz.ch/handle/20.500.11850/68669){:target="_blank" rel="noopener"}. 
 Yes, long before Java and the whole object oriented wave. 
